@@ -10,8 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'body',
-        'created_by'
+        'body'    
     ];
 
     public function owner()
