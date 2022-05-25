@@ -85,6 +85,14 @@ class PostController extends Controller
     {
         if ($post->owner->id == auth()->user()->id) {
             $post->delete();
+            
+            return back()->with([
+                'message' => 'Record was deleted.'
+            ]);
+        }else{
+            return redirect(route('posts.index'))->withErrors([
+                'You have no permission to delete this item'
+            ]);
         }
 
         return redirect(route('posts.index'));

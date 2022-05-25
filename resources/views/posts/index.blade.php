@@ -9,16 +9,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <table class="table-auto border hover:border-separate">
-                        <thead>
+                    <x-validation-errors class="mb-4" :errors="$errors" />
+                    <x-success-message />
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
                             <tr>
-                                <td>ID</td>
-                                <td>Message</td>
-                                <td>User</td>
-                                <td>Actions</td>
+                                <th>
+                                    ID
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                                <th>User</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($posts as $post)
                                 <tr class="border border-collapse border-slate-800">
                                     <td class="border"> {{ $post->id }} </td>
