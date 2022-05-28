@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -38,7 +38,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user();
+        
+        $validated = $this->validate($request, [
+            'body' => ['required', 'min:10']
+        ]);
+
+        $post = new Post([
+            'body' => $validated['body']
+        ]);
+        
+        $user->posts()->save($post);
+        
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -49,7 +61,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show', ['post' => $post]);
     }
 
     /**
@@ -60,7 +72,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -72,7 +84,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        
+        $validated = $this->validate($request, [
+            'body' => ['required', 'min:10']
+        ]);
+
+        $post->body = $validated['body'];
+
+        $post->save();
+        
+        return redirect(route('posts.index'));
     }
 
     /**

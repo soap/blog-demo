@@ -11,6 +11,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-validation-errors class="mb-4" :errors="$errors" />
                     <x-success-message />
+                    <div class="flex justify-end">
+                        <a href="{{ route('posts.create') }}">Create Post</a>
+                    </div>
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -29,8 +32,8 @@
                                     <td class="border"> {{ $post->body }} </td>
                                     <td class="border"> {{ $post->owner->name }} </td>
                                     <td class="border"> 
-                                        View 
-                                        Edit 
+                                        <a href="{{ route('posts.show', $post) }}">View</a>
+                                        <a href="{{ route('posts.edit', $post) }}">Edit</a>
                                         <a href="{{ route('posts.delete', ['post' => $post]) }}">Delete</a>
                                     </td>
                                 </tr>
