@@ -1,3 +1,5 @@
+[![tests](https://github.com/soap/blog-demo/actions/workflows/run-tests.yml/badge.svg)](https://github.com/soap/blog-demo/actions/workflows/run-tests.yml)
+
 ## About Laravel Blog Demo
 
 
