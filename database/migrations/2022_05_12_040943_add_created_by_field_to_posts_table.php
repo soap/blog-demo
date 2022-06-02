@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('created_by')->after('body');
+            $table->unsignedBigInteger('created_by')->nullable()->after('body');
 
             $table->foreign('created_by')
                 ->on("users")->references('id');
