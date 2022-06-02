@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(config('app.rows_per_page'));
         return view('posts.index', [
             'posts' => $posts
         ]);
@@ -93,7 +93,9 @@ class PostController extends Controller
 
         $post->save();
         
-        return redirect(route('posts.index'));
+        return redirect(route('posts.index'))->with([
+            'message' => 'Your record successfully saved'
+        ]);
     }
 
     /**
